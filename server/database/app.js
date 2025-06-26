@@ -63,12 +63,14 @@ app.get('/fetchDealers', async (req, res) => {
 
 // Express route to fetch Dealers by a particular state
 app.get('/fetchDealers/:state', async (req, res) => {
-    res.send(dealerships_data.filter(dealer => dealer.state === req.params.state));
+    res.send(dealerships_data['dealerships'].filter(dealer => 
+        dealer.state.toLowerCase() === req.params.state.toLowerCase()
+    ));
 });
 
 // Express route to fetch dealer by a particular id
 app.get('/fetchDealer/:id', async (req, res) => {
-    dealerships_data.find(d => String(d.id) === req.params.id);
+    res.json(dealerships_data['dealerships'].find(d => String(d.id) === req.params.id));
 });
 
 //Express route to insert review
