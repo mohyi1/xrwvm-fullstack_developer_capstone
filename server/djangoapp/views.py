@@ -15,7 +15,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from .models import CarMake, CarModel
 from .populate import initiate
-from .restapis import get_request, analyze_review_sentiments, post_review
+from .restapis import get_request, analyze_review_sentiments
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -149,7 +149,8 @@ def add_review(request):
     #     return JsonResponse({"status":403,"message":"Unauthorized"})
     data = json.loads(request.body)
     try:
-        # response = post_review(data)
+        response = post_review(data)
+        print(response)
         return JsonResponse({"status": 200})
     except BaseException:
         return JsonResponse(
