@@ -121,13 +121,21 @@ def get_dealer_details(request, dealer_id):
     else:
         return JsonResponse({"status":400,"message":"Bad Request"})
 
+
+
 def add_review(request):
-    if(request.user.is_anonymous == False):
-        data = json.loads(request.body)
-        try:
-            response = post_review(data)
-            return JsonResponse({"status":200})
-        except:
-            return JsonResponse({"status":401,"message":"Error in posting review"})
-    else:
-        return JsonResponse({"status":403,"message":"Unauthorized"})
+    # if(request.user.is_anonymous == False):
+    #     data = json.loads(request.body)
+    #     try:
+    #         response = post_review(data)
+    #         return JsonResponse({"status":200})
+    #     except:
+    #         return JsonResponse({"status":401,"message":"Error in posting review"})
+    # else:
+    #     return JsonResponse({"status":403,"message":"Unauthorized"})
+    data = json.loads(request.body)
+    try:
+        response = post_review(data)
+        return JsonResponse({"status":200})
+    except:
+        return JsonResponse({"status":401,"message":"Error in posting review"})
