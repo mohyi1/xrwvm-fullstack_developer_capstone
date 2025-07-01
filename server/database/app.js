@@ -1,3 +1,4 @@
+/*jshint esversion: 8 */
 /* globals require, module, console */
 const express = require('express');
 const mongoose = require('mongoose');
